@@ -8,19 +8,72 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "ContributorClass",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/ContributorClass.gd"
+}, {
+"base": "PanelContainer",
+"class": "GistItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/GistItem.gd"
+}, {
+"base": "Control",
+"class": "HealthBar",
+"language": "GDScript",
+"path": "res://src/game/hud/HealthBar.gd"
+}, {
+"base": "Resource",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://src/game/player/Inventory.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InvitationItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+}, {
+"base": "Resource",
+"class": "Item",
+"language": "GDScript",
+"path": "res://src/game/player/Item.gd"
+}, {
+"base": "PanelContainer",
+"class": "RepositoryItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
+}, {
+"base": "Control",
+"class": "VirtualJoystick",
+"language": "GDScript",
+"path": "res://Virtual Joystick/joystick/virtual_joystick.gd"
+} ]
 _global_script_class_icons={
+"ContributorClass": "",
+"GistItem": "",
+"HealthBar": "",
+"Inventory": "",
+"InvitationItem": "",
+"Item": "",
+"RepositoryItem": "",
+"VirtualJoystick": ""
 }
 
 [application]
 
 config/name="2D Horror Demo"
-run/main_scene="res://maps/map_test_1.tscn"
+run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 game="*res://src/game/game.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+Global="*res://src/global.gd"
 
 [debug]
 
@@ -29,7 +82,19 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
+window/size/resizable=false
 window/dpi/allow_hidpi=true
+window/stretch/mode="2d"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
+
+[global]
+
+export=true
+"import etc"=true
+import=true
 
 [input]
 
@@ -84,9 +149,25 @@ debug={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":78,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+draw_artifact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[inventory_editor]
+
+items_split_offset=195
+inventories_split_offset=154
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 2d/snapping/use_gpu_pixel_snap=true
-environment/default_clear_color=Color( 0.00784314, 0.00784314, 0.00784314, 1 )
+vram_compression/import_etc=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 quality/2d/use_pixel_snap=true
